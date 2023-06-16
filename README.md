@@ -2,11 +2,6 @@
 
 Explore o poder da versão 13 do Next.js criando uma lista de países utilizando a API [REST Countries](https://restcountries.com/).
 
-## 🤓 Aprenda nesse mini-projeto
-**NextJS 13**
-
-`Server Components` `Data fetching` `Nested layouts` `Routes` `pages.tsx` `layout.tsx` `error.tsx` `loading.tsx`
-
 ## 🔨 Requisitos
 - Utilize a [API REST Countries](https://restcountries.com/) para obter os dados dos países.
 - Utilize o Next.js na versão mais atual para construir a estrutura do projeto e gerenciar as rotas da aplicação.
@@ -33,6 +28,22 @@ Temos uma sugestão de design no Figma. Mas sinta-se livre para utilizar a criat
 
 ![image](https://github.com/codante-io/mp-lista-de-paises-next/assets/6475893/5f35397c-f71e-4319-90b1-2ba970600a88)
 
+## 👉🏽 Sobre esse mini-projeto
+### Tecnologias sugeridas
+**NextJS 13**
+
+- `Server Components`
+- `Data fetching`
+- `Nested layouts`
+- `Routes`
+- `pages.tsx`
+- `layout.tsx`
+- `error.tsx`
+- `loading.tsx`
+
+### Pré-requisitos
+- `React`
+- `HTML, CSS, JavaScript`
 
 ## ❓ FAQ
 ### Posso utilizar outros frameworks ou outras versões do Next?
