@@ -2,6 +2,11 @@
 
 Explore o poder da versão 13 do Next.js criando uma lista de países utilizando a API [REST Countries](https://restcountries.com/).
 
+## 🤓 Aprenda nesse mini-projeto
+**NextJS 13**
+
+`Server Components` `Data fetching` `Nested layouts` `Routes` `pages.tsx` `layout.tsx` `error.tsx` `loading.tsx`
+
 ## 🔨 Requisitos
 - Utilize a [API REST Countries](https://restcountries.com/) para obter os dados dos países.
 - Utilize o Next.js na versão mais atual para construir a estrutura do projeto e gerenciar as rotas da aplicação.
