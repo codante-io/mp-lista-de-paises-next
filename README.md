@@ -22,7 +22,7 @@ Explore o poder da versão 13 do Next.js criando uma lista de países utilizando
 - Utilize um framework CSS, como Tailwind, para ganhar agilidade na implementação.
 
 ## 🎨 Design Sugerido
-Temos uma sugestão de design no Figma. Mas sinta-se livre para utilizar a criatividade e fazer o seu próprio estilo de notificação.
+Temos uma sugestão de design no Figma. Mas sinta-se livre para utilizar a criatividade e fazer o seu próprio design.
 
 🔗 [Link do Figma](https://www.figma.com/file/suvmja6210ggZOO6Cpehjl/Mini-Projetos---Codante.io?type=design&node-id=1316-4&t=b5wBErhDdCzTdDl6-0)
 
