@@ -11,7 +11,7 @@ Explore o poder da versão 13 do Next.js criando uma lista de países utilizando
   - Exiba a capital, população, continente e região e as línguas faladas no país.
   - Exiba o número da população em números simplificados, _por exemplo: 1.000.000 deve ser 1M e 1000 deve ser 1K._
   - Exiba uma lista dos países que fazem fronteira com o país exibido. Ao clicar em um dos países que fazem fronteira, redirecione para a página desse país.
-- Faça o deploy da sua aplicação e submeta no [Codante](https://codante.io/mini-projetos/lista-de-paises-nextjs)
+- Faça o deploy da sua aplicação e submeta no Codante.
 
 ## 🔨 Desafios extras para quem quer ir além
 - Implemente uma sessão de "países que falam a mesma língua", abaixo dos "países que fazem fronteira".
