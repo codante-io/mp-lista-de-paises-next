@@ -1,8 +1,16 @@
-
+import CountryCard from "@/components/CountryCard";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
-type Country = {
+export type Country = {
+  languages?: {
+    [key: string]: string;
+  };
+  capital: string;
+  region: string;
+  subregion: string;
+  population: number;
   name: {
     common: string;
   };
@@ -15,6 +23,8 @@ type Country = {
     svg: string;
     alt: string;
   };
+  borders?: string[];
+  cca3: string;
 };
 
 async function getCountries(): Promise<Country[]> {
@@ -25,23 +35,16 @@ async function getCountries(): Promise<Country[]> {
 export default async function Home() {
   const countries = await getCountries();
   return (
-    <section className="container mt-16 grid h-full grid-cols-5 gap-2 ">
+    <section className="container mt-16 grid h-full grid-cols-1 sm:grid-cols-2 gap-2 md:grid-cols-3 xl:grid-cols-5 ">
       {countries.map((country) => (
-        <Link href={`/pais/${country.name.common}`} key={country.name.common}>
-          <article className="h-64 w-full rounded-xl border-2 bg-white p-2 transition-all duration-300  ease-in-out hover:border-indigo-200 hover:shadow-xl">
-            <div className="relative h-40 w-full overflow-hidden rounded-lg p-2 ">
-              <Image
-                src={country.flags.svg}
-                alt={country.flags.alt}
-                fill
-                objectFit="cover"
-              />
-            </div>
-            <h1 className="mt-1 text-center text-xl font-bold">
-              {country.translations.por.common}
-            </h1>
-          </article>
-        </Link>
+        <React.Fragment key={country.name.common}>
+          <CountryCard
+            name={country.name.common}
+            ptName={country.translations.por.common}
+            flag={country.flags.svg}
+            flagAlt={country.flags.alt}
+          />
+        </React.Fragment>
       ))}
     </section>
   );

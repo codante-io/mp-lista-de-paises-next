@@ -9,7 +9,6 @@ const nunitoSans = Nunito_Sans({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Lista de países",
   description: "Uma lista de países criada com NextJS",
-  icons: "./favicon.svg",
 };
 
 export default function RootLayout({
