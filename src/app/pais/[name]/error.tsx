@@ -3,6 +3,8 @@
 import Link from "next/link";
 
 export default function Error() {
+  console.log("teste");
+  
   return (
     <>
       <div>

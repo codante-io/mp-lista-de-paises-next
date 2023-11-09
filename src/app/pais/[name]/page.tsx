@@ -14,8 +14,11 @@ import React from "react";
 async function getCountryByName(name: string): Promise<Country> {
   const res = await fetch("https://restcountries.com/v3.1/all");
   const countries: Country[] = await res.json();
-
-  return countries.find((country: Country) => country.name.common === name)!;
+  const countryData = countries.find(
+    (country: Country) => country.name.common === name,
+  );
+  if (!countryData) throw new Error("Country not found");
+  return countryData;
 }
 
 async function getCountryBordersByName(name: string) {
@@ -26,13 +29,13 @@ async function getCountryBordersByName(name: string) {
     (country: Country) => country.name.common === name,
   )!;
 
-  return country.borders?.map((border) => {
+  return country?.borders?.map((border) => {
     const borderCountry = countries.find((r) => r.cca3 === border)!;
     return {
-      name: borderCountry.name.common,
-      ptName: borderCountry.translations.por.common,
-      flag: borderCountry.flags.svg,
-      flagAlt: borderCountry.flags.alt,
+      name: borderCountry?.name.common,
+      ptName: borderCountry?.translations.por.common,
+      flag: borderCountry?.flags.svg,
+      flagAlt: borderCountry?.flags.alt,
     };
   });
 }
@@ -49,14 +52,14 @@ export default async function CountryPage({
   return (
     <section className="container flex flex-col">
       <h1 className="my-16 text-center text-5xl font-bold text-gray-800">
-        {country.translations.por.common}
+        {country?.translations?.por?.common}
       </h1>
       <Link href="/" className="flex w-fit items-center py-2 ">
         <span className="text-xl"> ⬅ </span> Voltar
       </Link>
       <article className="flex min-w-full flex-col justify-between rounded-xl bg-white p-10 lg:flex-row ">
         <section className="flex max-h-44 min-h-full flex-col justify-between">
-          {country.capital && (
+          {country?.capital && (
             <h2 className="text-xl  text-gray-800">
               <b>🏙️ Capital: </b>
               {country?.capital}
@@ -70,7 +73,7 @@ export default async function CountryPage({
           <h2 className="text-xl  text-gray-800">
             <b>👨‍👩‍👧‍👦 População:</b> {formatter.format(country?.population)}
           </h2>
-          {country.languages && (
+          {country?.languages && (
             <h2 className="flex max-w-lg flex-wrap items-center text-xl text-gray-800 ">
               <b> 🗣️ Línguas faladas:</b>
               <div className="flex flex-wrap gap-1">
@@ -88,8 +91,8 @@ export default async function CountryPage({
         </section>
         <div className="relative order-first my-2 h-48 w-96 max-w-full self-center   lg:order-last">
           <Image
-            src={country.flags?.svg}
-            alt={country.flags?.alt}
+            src={country?.flags?.svg}
+            alt={country?.flags?.alt}
             fill
             className="object-fill"
           />
