@@ -3,10 +3,26 @@ import { Country } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { RequestInfo } from "undici-types";
+
+async function fetchWithTimeout(resource: RequestInfo, options:any = {}) {
+  const { timeout = 8000 } = options;
+
+  const controller = new AbortController();
+  const id = setTimeout(() => controller.abort(), timeout);
+
+  const response = await fetch(resource, {
+    ...options,
+    signal: controller.signal,
+  });
+  clearTimeout(id);
+
+  return response;
+}
 
 
 async function getCountryByName(name: string): Promise<Country> {
-  const res = await fetch("https://restcountries.com/v3.1/all");
+  const res = await fetchWithTimeout("https://restcountries.com/v3.1/all");
   const countries: Country[] = await res.json();
   const countryData = countries.find(
     (country: Country) => country.name.common === name,
