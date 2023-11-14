@@ -4,12 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-// async function getCountryByName(name: string): Promise<Country> {
-//   const res = await fetch(
-//     `https://restcountries.com/v3.1/name/${name}?fullText=true`,
-//   );
-//   return (await res.json())[0];
-// }
 
 async function getCountryByName(name: string): Promise<Country> {
   const res = await fetch("https://restcountries.com/v3.1/all");
@@ -90,7 +84,7 @@ export default async function CountryPage({
         <div className="relative order-first my-2 h-48 w-96 max-w-full self-center   lg:order-last">
           <Image
             src={country?.flags?.svg}
-            alt={country?.flags?.alt}
+            alt={country?.flags?.alt ?? `Bandeira do pais ${country.translations.por.common}`}
             fill
             className="object-fill shadow-lg"
           />
