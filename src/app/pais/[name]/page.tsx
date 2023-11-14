@@ -1,5 +1,5 @@
-import { Country } from "@/app/page";
 import CountryCard from "@/components/CountryCard";
+import { Country } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -66,9 +66,7 @@ export default async function CountryPage({
             </h2>
           )}
           <h2 className="text-xl  text-gray-800">
-            <b> 🗺️ Continente: </b>
-            {country?.region}
-            {country?.subregion && ` - ${country?.subregion}`}
+            <b> 🗺️ Continente: </b>   {country?.region}     {country?.subregion && ` - ${country?.subregion}`}
           </h2>
           <h2 className="text-xl  text-gray-800">
             <b>👨‍👩‍👧‍👦 População:</b> {formatter.format(country?.population)}
@@ -94,7 +92,7 @@ export default async function CountryPage({
             src={country?.flags?.svg}
             alt={country?.flags?.alt}
             fill
-            className="object-fill"
+            className="object-fill shadow-lg"
           />
         </div>
       </article>
