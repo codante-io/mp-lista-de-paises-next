@@ -1,4 +1,3 @@
-import { get } from "http";
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -17,6 +16,14 @@ export type Country = {
   flags: {
     svg: string;
     alt: string;
+  };
+
+  capital: string;
+  region: string;
+  subregion: string;
+  population: number;
+  languages?: {
+    [key: string]: string;
   };
 
 };
