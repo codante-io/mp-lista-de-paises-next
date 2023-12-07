@@ -53,3 +53,5 @@ Sinta-se livre para fazer de outras maneiras, caso você esteja estudando outros
 
 ### Posso usar features experimentais do Next?
 Sim. Algumas features ainda estão em alpha e portanto não são recomendadas para uso em produção. Como esse se trata de um projeto para aprendizado, você pode aproveitar para experimentar essas features.
+## Inspiração
+[REST Countries API with color theme switcher](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca)
