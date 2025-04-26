@@ -1,7 +1,10 @@
 export default function Header() {
   return (
-    <div className="p-4 text-3xl color-red font-bold  bg-white">
-      Paises Do Mundo
-    </div>
+    <header className="bg-white w-full h-[104px] flex items-center">
+      <div className="w-full max-w-[1200px] mx-auto flex items-center gap-3 px-4">
+        <span className="text-3xl">🌍</span>
+        <span className="text-2xl font-bold">Países do Mundo</span>
+      </div>
+    </header>
   );
 }
