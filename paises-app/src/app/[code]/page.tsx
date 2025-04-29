@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Header from "../header/header";
+import Header from "../components/header";
 
 function formatPopulation(pop: number) {
   if (pop >= 1_000_000) return (pop / 1_000_000).toFixed(1) + "M";

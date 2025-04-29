@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Header from "../app/header/header";
+import Header from "./components/header";
 
 async function getCountries() {
   const res = await fetch("https://restcountries.com/v3.1/all");
