@@ -7,6 +7,7 @@ import {
   useCountry,
   useCountryBorders,
 } from "../../composable/query/useCountry";
+import Loading from "../loading";
 
 function formatPopulation(pop: number) {
   if (pop >= 1_000_000) return (pop / 1_000_000).toFixed(1) + "M";
@@ -21,19 +22,27 @@ export default function CountryPage() {
   const { data: country, isLoading } = useCountry(code);
   const { data: borders = [] } = useCountryBorders(country?.borders);
 
-  if (isLoading || !country) return <p>Carregando...</p>;
+  if (isLoading || !country) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-gray-100">
+        <Loading />
+      </div>
+    );
+  }
 
   return (
     <div className="bg-gray-100 min-h-screen">
       <Header />
       <div className="max-w-[1200px] mx-auto p-4">
-        <Link href="/" className="text-blue-600 text-sm flex items-center mb-4">
-          ← Voltar
-        </Link>
-
         <h1 className="text-4xl font-bold text-center mb-6">
           {country.translations.por?.common || country.name.common}
         </h1>
+        <Link
+          href="/"
+          className="mb-6 block text-lg font-semibold text-black-600 hover:underline"
+        >
+          ← Voltar
+        </Link>
 
         <div className="bg-white rounded-[21.5px] shadow-md p-6 flex flex-col md:flex-row justify-between items-center gap-6 mb-10">
           <div className="flex-1">
@@ -79,7 +88,7 @@ export default function CountryPage() {
             <h2 className="text-2xl font-semibold mb-6">
               Países que fazem fronteira
             </h2>
-            <div className="flex flex-wrap gap-6 justify-center md:justify-start">
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               {borders.map((borderCountry: any) => (
                 <Link
                   key={borderCountry.cca3}
