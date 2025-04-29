@@ -1,5 +1,12 @@
+"use client";
+
 import Link from "next/link";
 import Header from "../components/header";
+import { useParams } from "next/navigation";
+import {
+  useCountry,
+  useCountryBorders,
+} from "../../composable/query/useCountry";
 
 function formatPopulation(pop: number) {
   if (pop >= 1_000_000) return (pop / 1_000_000).toFixed(1) + "M";
@@ -7,31 +14,18 @@ function formatPopulation(pop: number) {
   return pop.toString();
 }
 
-async function getCountry(code: string) {
-  const res = await fetch(`https://restcountries.com/v3.1/alpha/${code}`);
-  const data = await res.json();
-  return data[0];
-}
+export default function CountryPage() {
+  const params = useParams();
+  const code = params?.code as string;
 
-async function getBorders(codes: string[]) {
-  const res = await fetch(
-    `https://restcountries.com/v3.1/alpha?codes=${codes.join(",")}`
-  );
-  return res.json();
-}
+  const { data: country, isLoading } = useCountry(code);
+  const { data: borders = [] } = useCountryBorders(country?.borders);
 
-export default async function CountryPage({
-  params,
-}: {
-  params: { code: string };
-}) {
-  const country = await getCountry(params.code);
-  const borders = country.borders ? await getBorders(country.borders) : [];
+  if (isLoading || !country) return <p>Carregando...</p>;
 
   return (
     <div className="bg-gray-100 min-h-screen">
       <Header />
-
       <div className="max-w-[1200px] mx-auto p-4">
         <Link href="/" className="text-blue-600 text-sm flex items-center mb-4">
           ← Voltar
@@ -85,13 +79,12 @@ export default async function CountryPage({
             <h2 className="text-2xl font-semibold mb-6">
               Países que fazem fronteira
             </h2>
-
             <div className="flex flex-wrap gap-6 justify-center md:justify-start">
               {borders.map((borderCountry: any) => (
                 <Link
                   key={borderCountry.cca3}
                   href={`/${borderCountry.cca3}`}
-                  className="bg-white rounded-[21.5px] shadow-md p-4 w-[220px] sm:w-[220px] flex flex-col items-center hover:shadow-lg transition"
+                  className="bg-white rounded-[21.5px] shadow-md p-4 w-[220px] flex flex-col items-center hover:shadow-lg transition"
                 >
                   <img
                     src={borderCountry.flags.svg}
