@@ -5,12 +5,13 @@ import Link from "next/link";
 import Header from "./components/header";
 import { useCountries } from "../composable/query/useCountries";
 import Loading from "./loading";
+import { Country } from "@/app/@types/country";
 
 export default function HomePage() {
   const [search, setSearch] = useState("");
   const { data: countries = [], isLoading } = useCountries();
 
-  const filteredCountries = countries.filter((country: any) => {
+  const filteredCountries = countries.filter((country: Country) => {
     const name = country.translations?.por?.common || country.name.common;
     return name.toLowerCase().includes(search.toLowerCase());
   });
@@ -36,7 +37,7 @@ export default function HomePage() {
           className="w-full p-3 mb-8 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-500 text-lg"
         />
         <main className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {filteredCountries.map((country: any) => (
+          {filteredCountries.map((country: Country) => (
             <Link
               key={country.cca3}
               href={`/${country.cca3}`}

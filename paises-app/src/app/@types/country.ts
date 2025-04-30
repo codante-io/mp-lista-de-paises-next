@@ -18,6 +18,10 @@ export interface CountryFlags {
 }
 
 export interface Country {
+  languages?: Record<string, string>;
+  population: number;
+  continents: string[];
+  capital?: string[];
   cca3: string;
   name: CountryName;
   translations: CountryTranslations;

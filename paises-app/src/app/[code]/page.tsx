@@ -8,8 +8,9 @@ import {
   useCountryBorders,
 } from "../../composable/query/useCountry";
 import Loading from "../loading";
+import { Country } from "@/app/@types/country";
 
-function formatPopulation(pop: number) {
+function formatPopulation(pop: number): string {
   if (pop >= 1_000_000) return (pop / 1_000_000).toFixed(1) + "M";
   if (pop >= 1_000) return (pop / 1_000).toFixed(1) + "K";
   return pop.toString();
@@ -34,12 +35,12 @@ export default function CountryPage() {
     <div className="bg-gray-100 min-h-screen">
       <Header />
       <div className="max-w-[1200px] mx-auto p-4">
-        <h1 className="text-4xl font-bold text-center mb-1 ">
+        <h1 className="text-4xl font-bold text-center mb-1">
           {country.translations.por?.common || country.name.common}
         </h1>
         <Link
           href="/"
-          className="mb-1 block text-lg  text-black-600 hover:underline"
+          className="mb-1 block text-lg text-black-600 hover:underline"
         >
           ← Voltar
         </Link>
@@ -63,9 +64,9 @@ export default function CountryPage() {
               <strong>Línguas faladas:</strong>
             </p>
             <div className="flex flex-wrap gap-2 mt-2">
-              {Object.values(country.languages || {}).map((lang: any) => (
+              {Object.entries(country.languages || {}).map(([key, lang]) => (
                 <span
-                  key={lang}
+                  key={key}
                   className="bg-purple-600 text-white px-3 py-1 rounded-full text-sm"
                 >
                   {lang}
@@ -89,7 +90,7 @@ export default function CountryPage() {
               Países que fazem fronteira
             </h2>
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-              {borders.map((borderCountry: any) => (
+              {borders.map((borderCountry: Country) => (
                 <Link
                   key={borderCountry.cca3}
                   href={`/${borderCountry.cca3}`}
