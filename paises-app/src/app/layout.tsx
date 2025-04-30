@@ -1,6 +1,6 @@
 import "../../src/app/globals.css";
 import { ReactNode } from "react";
-import Providers from "../composable/provider/ReactQueryProvider";
+import Providers from "./provider/ReactQueryProvider";
 
 export const metadata = {
   title: "Lista de Países",
