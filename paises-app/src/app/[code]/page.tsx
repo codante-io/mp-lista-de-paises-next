@@ -34,8 +34,8 @@ export default function CountryPage() {
   return (
     <div className="bg-gray-100 min-h-screen">
       <Header />
-      <div className="max-w-[1200px] mx-auto p-4">
-        <h1 className="text-4xl font-bold text-center mb-1">
+      <div className="max-w-[1200px] mx-auto p-16">
+        <h1 className="text-4xl font-bold text-center mb-1 md:mb-4  ">
           {country.translations.por?.common || country.name.common}
         </h1>
         <Link
@@ -45,7 +45,7 @@ export default function CountryPage() {
           ← Voltar
         </Link>
 
-        <div className="bg-white rounded-[21.5px] shadow-md p-6 flex flex-col md:flex-row justify-between items-center gap-6 mb-10">
+        <div className="bg-white rounded-[21.5px] shadow-md p-6 flex flex-col md:flex-row justify-between items-center gap-4 mb-10">
           <div className="flex-1">
             <p className="mb-2">
               <span className="text-xl">🏙️</span> <strong>Capital:</strong>{" "}
@@ -89,12 +89,12 @@ export default function CountryPage() {
             <h2 className="text-2xl font-semibold mb-6">
               Países que fazem fronteira
             </h2>
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
               {borders.map((borderCountry: Country) => (
                 <Link
                   key={borderCountry.cca3}
                   href={`/${borderCountry.cca3}`}
-                  className="bg-white rounded-[21.5px] shadow-md p-4 w-[220px] flex flex-col items-center hover:shadow-lg transition"
+                  className="bg-white rounded-[21.5px] shadow-md p-4 flex flex-col items-center hover:shadow-lg transition"
                 >
                   <img
                     src={borderCountry.flags.svg}
