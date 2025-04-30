@@ -34,12 +34,12 @@ export default function CountryPage() {
     <div className="bg-gray-100 min-h-screen">
       <Header />
       <div className="max-w-[1200px] mx-auto p-4">
-        <h1 className="text-4xl font-bold text-center mb-6">
+        <h1 className="text-4xl font-bold text-center mb-1 ">
           {country.translations.por?.common || country.name.common}
         </h1>
         <Link
           href="/"
-          className="mb-6 block text-lg font-semibold text-black-600 hover:underline"
+          className="mb-1 block text-lg  text-black-600 hover:underline"
         >
           ← Voltar
         </Link>
